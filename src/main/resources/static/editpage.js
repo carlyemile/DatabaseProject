@@ -15,4 +15,8 @@ xml.send();
 }
 function setFields(results){
 document.getElementById("title").value=results.title;
+document.getElementById("year").value=results.title;
+document.getElementById("rated").value=results.title;
+
+
 }
