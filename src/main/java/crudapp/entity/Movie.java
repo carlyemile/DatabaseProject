@@ -5,7 +5,7 @@ import java.sql.Date;
 public class Movie {
 	String title, rated;
 	int year;
-	Date releaseDate;
+	String releaseDate;
 	int runtime;
 	String plot;
 	String awards;
@@ -15,7 +15,7 @@ public class Movie {
 	int imdbVotes;
 	String imdbID;
 	String type;
-	Date dvdDate;
+	String dvdDate;
 	int boxOffice;
 	String production;
 	String website;
@@ -39,10 +39,10 @@ public class Movie {
 	public void setYear(int year) {
 		this.year = year;
 	}
-	public Date getReleaseDate() {
+	public String getReleaseDate() {
 		return releaseDate;
 	}
-	public void setReleaseDate(Date releaseDate) {
+	public void setReleaseDate(String releaseDate) {
 		this.releaseDate = releaseDate;
 	}
 	public int getRuntime() {
@@ -99,10 +99,10 @@ public class Movie {
 	public void setType(String type) {
 		this.type = type;
 	}
-	public Date getDvdDate() {
+	public String getDvdDate() {
 		return dvdDate;
 	}
-	public void setDvdDate(Date dvdDate) {
+	public void setDvdDate(String dvdDate) {
 		this.dvdDate = dvdDate;
 	}
 	public int getBoxOffice() {

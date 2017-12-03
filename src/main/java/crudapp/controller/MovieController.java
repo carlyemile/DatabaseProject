@@ -19,6 +19,7 @@ public class MovieController {
     @Autowired
     private MovieService movieService;
     private String addedImdbId;
+    private String selectedImdbId;
 
     @RequestMapping(value="/movies", method = RequestMethod.GET, produces = "application/json")
     public @ResponseBody Collection<Movie> getAllMovies() throws SQLException{
@@ -31,7 +32,7 @@ public class MovieController {
     	movie.setTitle(attrs[0]);
     	movie.setYear(Integer.parseInt(attrs[1]));
     	movie.setRated(attrs[2]);
-    	movie.setReleaseDate(Date.valueOf(attrs[3]));
+    	movie.setReleaseDate(attrs[3]);
     	movie.setRuntime(Integer.parseInt(attrs[4]));
     	movie.setPlot(attrs[5]);
     	movie.setPoster(attrs[6]);
@@ -39,11 +40,16 @@ public class MovieController {
     	movie.setImdbRating(Double.parseDouble(attrs[8]));
     	movie.setImdbVotes(Integer.parseInt(attrs[9]));
     	movie.setType(attrs[10]);
-    	movie.setDvdDate(Date.valueOf(attrs[11]));
+    	movie.setDvdDate(attrs[11]);
     	movie.setBoxOffice(Integer.parseInt(attrs[12]));
     	movie.setProduction(attrs[13]);
     	movie.setWebsite(attrs[14]);
     	addedImdbId = movieService.addMovie(movie);
+    }
+    
+    @RequestMapping(value="/selectedMovie", method = RequestMethod.GET)
+    public @ResponseBody Movie getSelectedMovie(@RequestParam(name="imdbId") String imdbId) throws SQLException {
+    	return movieService.getMovieById(imdbId);
     }
     
     @RequestMapping(value="/updateMovie", method = RequestMethod.POST)
@@ -53,7 +59,7 @@ public class MovieController {
     	movie.setTitle(attrs[0]);
     	movie.setYear(Integer.parseInt(attrs[1]));
     	movie.setRated(attrs[2]);
-    	movie.setReleaseDate(Date.valueOf(attrs[3]));
+    	movie.setReleaseDate(attrs[3]);
     	movie.setRuntime(Integer.parseInt(attrs[4]));
     	movie.setPlot(attrs[5]);
     	movie.setPoster(attrs[6]);
@@ -61,7 +67,7 @@ public class MovieController {
     	movie.setImdbRating(Double.parseDouble(attrs[8]));
     	movie.setImdbVotes(Integer.parseInt(attrs[9]));
     	movie.setType(attrs[10]);
-    	movie.setDvdDate(Date.valueOf(attrs[11]));
+    	movie.setDvdDate(attrs[11]);
     	movie.setBoxOffice(Integer.parseInt(attrs[12]));
     	movie.setProduction(attrs[13]);
     	movie.setWebsite(attrs[14]);

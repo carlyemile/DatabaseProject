@@ -37,7 +37,7 @@ public class MovieDao {
 			movie.setTitle(rs.getString("title"));
 	    	movie.setYear(rs.getInt("year"));
 	    	movie.setRated(rs.getString("mpaa_rating"));
-	    //	movie.setReleaseDate(new SimpleDateFormat("dd-MM-yyyy").parse(rs.getDate("released").toString()));
+	    	movie.setReleaseDate(rs.getString("released"));
 	    	movie.setRuntime(rs.getInt("runtime"));
 	    	movie.setPlot(rs.getString("plot"));
 	    	movie.setPoster(rs.getString("poster"));
@@ -45,7 +45,7 @@ public class MovieDao {
 	    	movie.setImdbRating(rs.getDouble("imdbrating"));
 	    	movie.setImdbVotes(rs.getInt("imdbvotes"));
 	    	movie.setType(rs.getString("mtype"));
-	   // 	movie.setDvdDate(rs.getDate("dvd"));
+	    	movie.setDvdDate(rs.getString("dvd"));
 	    	movie.setBoxOffice(rs.getInt("boxoffice"));
 	    	movie.setProduction(rs.getString("production"));
 	    	movie.setWebsite(rs.getString("website"));
@@ -68,6 +68,19 @@ public class MovieDao {
 		
 	}
 	
+	public Movie getMovieById(String imdbId) throws SQLException {
+		Connection conn = this.connect(); 
+		String sql = "SELECT * FROM movie where imdbId =?";
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, imdbId);
+		ResultSet rs = pstmt.executeQuery();
+		MovieRowMapper rowMapper = new MovieRowMapper();
+		while(rs.next())
+		return rowMapper.mapRow(rs, 0);
+		
+		return null;
+	}
+	
 	public String addMovie(Movie movie) throws SQLException{
 		Connection conn = this.connect();
 		List<Movie> movies = new ArrayList<Movie>();
@@ -76,7 +89,7 @@ public class MovieDao {
 		pstmt.setString(0,movie.getTitle());
 		pstmt.setInt(1,movie.getYear());
 		pstmt.setString(2,movie.getRated());
-		pstmt.setDate(3,movie.getReleaseDate());
+		pstmt.setString(3,movie.getReleaseDate());
 		pstmt.setInt(4,movie.getRuntime());
 		pstmt.setString(5,movie.getPlot());
 		pstmt.setString(6,movie.getPoster());
@@ -84,7 +97,7 @@ public class MovieDao {
 		pstmt.setDouble(8,movie.getImdbRating());
 		pstmt.setInt(9,movie.getImdbVotes());
 		pstmt.setString(10,movie.getType());
-		pstmt.setDate(11,movie.getDvdDate());
+		pstmt.setString(11,movie.getDvdDate());
 		pstmt.setInt(12,movie.getBoxOffice());
 		pstmt.setString(13,movie.getProduction());
 		pstmt.setString(14,movie.getWebsite());
@@ -105,7 +118,7 @@ public class MovieDao {
 		pstmt.setString(0,movie.getTitle());
 		pstmt.setInt(1,movie.getYear());
 		pstmt.setString(2,movie.getRated());
-		pstmt.setDate(3,movie.getReleaseDate());
+		pstmt.setString(3,movie.getReleaseDate());
 		pstmt.setInt(4,movie.getRuntime());
 		pstmt.setString(5,movie.getPlot());
 		pstmt.setString(6,movie.getPoster());
@@ -113,7 +126,7 @@ public class MovieDao {
 		pstmt.setDouble(8,movie.getImdbRating());
 		pstmt.setInt(9,movie.getImdbVotes());
 		pstmt.setString(10,movie.getType());
-		pstmt.setDate(11,movie.getDvdDate());
+		pstmt.setString(11,movie.getDvdDate());
 		pstmt.setInt(12,movie.getBoxOffice());
 		pstmt.setString(13,movie.getProduction());
 		pstmt.setString(14,movie.getWebsite());
@@ -200,6 +213,6 @@ public class MovieDao {
 	
 	 public static void main(String[] args) throws SQLException{
 		 MovieDao app = new MovieDao();
-		System.out.println(app.getAllMovies().get(0).getTitle());
+		System.out.println(app.getMovieById("tt3896198").getTitle());
 	 }
 }

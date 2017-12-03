@@ -21,6 +21,10 @@ public class MovieService {
 		return movieDao.getAllMovies();
 	}
 	
+	public Movie getMovieById(String imdbId) throws SQLException {
+		return movieDao.getMovieById(imdbId);
+	}
+	
 	
 	public void updateMovie(Movie movie) throws SQLException{
 		movieDao.updateMovie(movie);
