@@ -14,7 +14,7 @@ var optionparam = "option="+menu.options[menu.selectedIndex].value.toLowerCase()
 xml.open("GET", url+"?"+inputparam+"&"+optionparam, true);
 xml.send();
 }
-function displayResults(movies){ 
+function displayResults(movies){  
 	console.log(movies[0].title);
     var table = "<table class='table-bordered table-responsive'><tr><th>IMDB ID</th>"+
     "<th>Title</th><th>Year</th><th>MPAA Rating</th><th>Release Date</th>"+
