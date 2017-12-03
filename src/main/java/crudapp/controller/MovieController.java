@@ -32,7 +32,7 @@ public class MovieController {
     	movie.setYear(Integer.parseInt(attrs[1]));
     	movie.setRated(attrs[2]);
     	movie.setReleaseDate(Date.valueOf(attrs[3]));
-    	movie.setRuntime(attrs[4]);
+    	movie.setRuntime(Integer.parseInt(attrs[4]));
     	movie.setPlot(attrs[5]);
     	movie.setPoster(attrs[6]);
     	movie.setMetascore(Integer.parseInt(attrs[7]));
@@ -43,7 +43,50 @@ public class MovieController {
     	movie.setBoxOffice(Integer.parseInt(attrs[12]));
     	movie.setProduction(attrs[13]);
     	movie.setWebsite(attrs[14]);
-    	movieService.addMovie(movie);
+    	addedImdbId = movieService.addMovie(movie);
+    }
+    
+    @RequestMapping(value="/updateMovie", method = RequestMethod.POST)
+    public void updateMovie(@RequestParam(name = "imdbId") String imdbId, @RequestParam(name = "attrs") String[] attrs) throws SQLException{
+    	Movie movie = new Movie();
+    	movie.setImdbID(imdbId);
+    	movie.setTitle(attrs[0]);
+    	movie.setYear(Integer.parseInt(attrs[1]));
+    	movie.setRated(attrs[2]);
+    	movie.setReleaseDate(Date.valueOf(attrs[3]));
+    	movie.setRuntime(Integer.parseInt(attrs[4]));
+    	movie.setPlot(attrs[5]);
+    	movie.setPoster(attrs[6]);
+    	movie.setMetascore(Integer.parseInt(attrs[7]));
+    	movie.setImdbRating(Double.parseDouble(attrs[8]));
+    	movie.setImdbVotes(Integer.parseInt(attrs[9]));
+    	movie.setType(attrs[10]);
+    	movie.setDvdDate(Date.valueOf(attrs[11]));
+    	movie.setBoxOffice(Integer.parseInt(attrs[12]));
+    	movie.setProduction(attrs[13]);
+    	movie.setWebsite(attrs[14]);
+    	movieService.updateMovie(movie);
+    }
+    
+    @RequestMapping(value="/deleteMovie", method = RequestMethod.POST)
+    public void deleteMovie(@RequestParam(name = "imdbId") String imdbId) throws SQLException{
+    	movieService.deleteMovie(imdbId);
+    }
+    
+    @RequestMapping(value="/search", method = RequestMethod.GET, produces = "application/json")
+    public @ResponseBody Collection<Movie> getAllMoviesByTitle(@RequestParam(name = "input") String input, @RequestParam(name = "option") String option) throws SQLException{
+    		if(option.equals("title"))
+    			return movieService.getAllMoviesByTitle(input);
+    		else if(option.equals("year"))
+    			return movieService.getAllMoviesByYear(input);
+    		else if(option.equals("genre"))
+    			return movieService.getAllMoviesByGenre(input);
+    		else if(option.equals("language"))
+    			return movieService.getAllMoviesByLanguage(input);
+    		else if(option.equals("country"))
+    			return movieService.getAllMoviesByCountry(input);
+    		else return null;
+    	
     }
     
     

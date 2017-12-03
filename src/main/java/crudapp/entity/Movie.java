@@ -6,7 +6,7 @@ public class Movie {
 	String title, rated;
 	int year;
 	Date releaseDate;
-	String runtime;
+	int runtime;
 	String plot;
 	String awards;
 	String poster;
@@ -45,10 +45,10 @@ public class Movie {
 	public void setReleaseDate(Date releaseDate) {
 		this.releaseDate = releaseDate;
 	}
-	public String getRuntime() {
+	public int getRuntime() {
 		return runtime;
 	}
-	public void setRuntime(String runtime) {
+	public void setRuntime(int runtime) {
 		this.runtime = runtime;
 	}
 	public String getPlot() {

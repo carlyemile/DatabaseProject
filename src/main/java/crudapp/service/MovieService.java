@@ -30,8 +30,28 @@ public class MovieService {
 		movieDao.deleteMovie(movieId);
 	}
 	
-	public void addMovie(Movie movie) throws SQLException{
-		movieDao.addMovie(movie);
+	public String addMovie(Movie movie) throws SQLException{
+		return movieDao.addMovie(movie);
+	}
+	
+	public List<Movie> getAllMoviesByTitle(String input) throws SQLException{
+		return movieDao.getAllMoviesByTitle(input);
+	}
+	
+	public List<Movie> getAllMoviesByYear(String input) throws SQLException{
+		return movieDao.getAllMoviesByYear(input);
+	}
+	
+	public List<Movie> getAllMoviesByGenre(String input) throws SQLException{
+		return movieDao.getAllMoviesByGenre(input);
+	}
+	
+	public List<Movie> getAllMoviesByLanguage(String input) throws SQLException{
+		return movieDao.getAllMoviesByLanguage(input);
+	}
+	
+	public List<Movie> getAllMoviesByCountry(String input) throws SQLException{
+		return movieDao.getAllMoviesByCountry(input);
 	}
 	
 }

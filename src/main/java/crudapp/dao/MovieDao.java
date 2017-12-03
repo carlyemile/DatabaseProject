@@ -1,6 +1,7 @@
 package crudapp.dao;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -32,8 +33,22 @@ public class MovieDao {
 	 class MovieRowMapper{
 		public Movie mapRow(ResultSet rs, int rowNum) throws SQLException {
 			Movie movie = new Movie();
-			movie.setImdbID(rs.getString("ImdbID"));
-			//add rest of attributes
+			movie.setImdbID(rs.getString("imdbID"));
+			movie.setTitle(rs.getString("title"));
+	    	movie.setYear(rs.getInt("year"));
+	    	movie.setRated(rs.getString("mpaa_rating"));
+	    //	movie.setReleaseDate(new SimpleDateFormat("dd-MM-yyyy").parse(rs.getDate("released").toString()));
+	    	movie.setRuntime(rs.getInt("runtime"));
+	    	movie.setPlot(rs.getString("plot"));
+	    	movie.setPoster(rs.getString("poster"));
+	    	movie.setMetascore(rs.getInt("metascore"));
+	    	movie.setImdbRating(rs.getDouble("imdbrating"));
+	    	movie.setImdbVotes(rs.getInt("imdbvotes"));
+	    	movie.setType(rs.getString("mtype"));
+	   // 	movie.setDvdDate(rs.getDate("dvd"));
+	    	movie.setBoxOffice(rs.getInt("boxoffice"));
+	    	movie.setProduction(rs.getString("production"));
+	    	movie.setWebsite(rs.getString("website"));
 			return movie;
 		}
 
@@ -62,7 +77,7 @@ public class MovieDao {
 		pstmt.setInt(1,movie.getYear());
 		pstmt.setString(2,movie.getRated());
 		pstmt.setDate(3,movie.getReleaseDate());
-		pstmt.setString(4,movie.getRuntime());
+		pstmt.setInt(4,movie.getRuntime());
 		pstmt.setString(5,movie.getPlot());
 		pstmt.setString(6,movie.getPoster());
 		pstmt.setInt(7,movie.getMetascore());
@@ -91,7 +106,7 @@ public class MovieDao {
 		pstmt.setInt(1,movie.getYear());
 		pstmt.setString(2,movie.getRated());
 		pstmt.setDate(3,movie.getReleaseDate());
-		pstmt.setString(4,movie.getRuntime());
+		pstmt.setInt(4,movie.getRuntime());
 		pstmt.setString(5,movie.getPlot());
 		pstmt.setString(6,movie.getPoster());
 		pstmt.setInt(7,movie.getMetascore());
@@ -185,6 +200,6 @@ public class MovieDao {
 	
 	 public static void main(String[] args) throws SQLException{
 		 MovieDao app = new MovieDao();
-		System.out.println(app.getAllMovies().get(0).getImdbID());
+		System.out.println(app.getAllMovies().get(0).getTitle());
 	 }
 }
