@@ -32,7 +32,7 @@ document.getElementById("imdbvotes").innerHTML+=results.imdbVotes;
 document.getElementById("mtype").innerHTML+=results.type;
 document.getElementById("dvd").innerHTML+=results.dvd;
 document.getElementById("boxoffice").innerHTML+=results.boxoffice;
-document.getElementById("production").innerHTML+=results.production;
+document.getElementById("production").innerHTML+=results.production; 
 document.getElementById("website").innerHTML+=results.website;
 console.log(results.actors);
 results.actors.forEach(function(item){
