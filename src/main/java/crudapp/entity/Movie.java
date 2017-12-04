@@ -13,14 +13,64 @@ public class Movie {
 	int metascore;
 	double imdbRating;
 	int imdbVotes;
-	String imdbID;
+	int imdbID;
 	String type;
 	String dvdDate;
-	int boxOffice;
+	String boxOffice;
 	String production;
 	String website;
 	boolean response;
+	String[] actors;
+	String[] countries;
+	String[] directors;
+	String[] languages;
+	String[] genres;
+	String[] writers;
+	Rating[] ratings;
 	
+	
+	public String[] getLanguages() {
+		return languages;
+	}
+	public void setLanguages(String[] languages) {
+		this.languages = languages;
+	}
+	public String[] getActors() {
+		return actors;
+	}
+	public void setActors(String[] actors) {
+		this.actors = actors;
+	}
+	public String[] getCountries() {
+		return countries;
+	}
+	public void setCountries(String[] countries) {
+		this.countries = countries;
+	}
+	public String[] getDirectors() {
+		return directors;
+	}
+	public void setDirectors(String[] directors) {
+		this.directors = directors;
+	}
+	public String[] getGenres() {
+		return genres;
+	}
+	public void setGenres(String[] genres) {
+		this.genres = genres;
+	}
+	public String[] getWriters() {
+		return writers;
+	}
+	public void setWriters(String[] writers) {
+		this.writers = writers;
+	}
+	public Rating[] getRatings() {
+		return ratings;
+	}
+	public void setRatings(Rating[] ratings) {
+		this.ratings = ratings;
+	}
 	public String getTitle() {
 		return title;
 	}
@@ -87,10 +137,10 @@ public class Movie {
 	public void setImdbVotes(int imdbVotes) {
 		this.imdbVotes = imdbVotes;
 	}
-	public String getImdbID() {
+	public int getImdbID() {
 		return imdbID;
 	}
-	public void setImdbID(String imdbID) {
+	public void setImdbID(int imdbID) {
 		this.imdbID = imdbID;
 	}
 	public String getType() {
@@ -105,10 +155,10 @@ public class Movie {
 	public void setDvdDate(String dvdDate) {
 		this.dvdDate = dvdDate;
 	}
-	public int getBoxOffice() {
+	public String getBoxOffice() {
 		return boxOffice;
 	}
-	public void setBoxOffice(int boxOffice) {
+	public void setBoxOffice(String boxOffice) {
 		this.boxOffice = boxOffice;
 	}
 	public String getProduction() {

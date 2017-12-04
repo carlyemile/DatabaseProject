@@ -26,57 +26,27 @@ public class MovieController {
         return movieService.getAllMovies();
     }
     
-    @RequestMapping(value="/addMovie", method = RequestMethod.POST)
-    public void addMovie(@RequestParam(name = "attrs") String[] attrs) throws SQLException{
-    	Movie movie = new Movie();
-    	movie.setTitle(attrs[0]);
-    	movie.setYear(Integer.parseInt(attrs[1]));
-    	movie.setRated(attrs[2]);
-    	movie.setReleaseDate(attrs[3]);
-    	movie.setRuntime(Integer.parseInt(attrs[4]));
-    	movie.setPlot(attrs[5]);
-    	movie.setPoster(attrs[6]);
-    	movie.setMetascore(Integer.parseInt(attrs[7]));
-    	movie.setImdbRating(Double.parseDouble(attrs[8]));
-    	movie.setImdbVotes(Integer.parseInt(attrs[9]));
-    	movie.setType(attrs[10]);
-    	movie.setDvdDate(attrs[11]);
-    	movie.setBoxOffice(Integer.parseInt(attrs[12]));
-    	movie.setProduction(attrs[13]);
-    	movie.setWebsite(attrs[14]);
-    	addedImdbId = movieService.addMovie(movie);
+    @RequestMapping(value="/addMovie", method = RequestMethod.POST, consumes = {"application/json"}, produces = MediaType.APPLICATION_JSON_VALUE)
+    public @ResponseBody Movie addMovie(@RequestBody Movie movie) throws SQLException{
+    	movieService.addMovie(movie);
+    	return movie;
     }
     
     @RequestMapping(value="/selectedMovie", method = RequestMethod.GET)
-    public @ResponseBody Movie getSelectedMovie(@RequestParam(name="imdbId") String imdbId) throws SQLException {
+    public @ResponseBody Movie getSelectedMovie(@RequestParam(name="imdbId") int imdbId) throws SQLException {
     	return movieService.getMovieById(imdbId);
     }
     
-    @RequestMapping(value="/updateMovie", method = RequestMethod.POST)
-    public void updateMovie(@RequestParam(name = "imdbId") String imdbId, @RequestParam(name = "attrs") String[] attrs) throws SQLException{
-    	Movie movie = new Movie();
-    	movie.setImdbID(imdbId);
-    	movie.setTitle(attrs[0]);
-    	movie.setYear(Integer.parseInt(attrs[1]));
-    	movie.setRated(attrs[2]);
-    	movie.setReleaseDate(attrs[3]);
-    	movie.setRuntime(Integer.parseInt(attrs[4]));
-    	movie.setPlot(attrs[5]);
-    	movie.setPoster(attrs[6]);
-    	movie.setMetascore(Integer.parseInt(attrs[7]));
-    	movie.setImdbRating(Double.parseDouble(attrs[8]));
-    	movie.setImdbVotes(Integer.parseInt(attrs[9]));
-    	movie.setType(attrs[10]);
-    	movie.setDvdDate(attrs[11]);
-    	movie.setBoxOffice(Integer.parseInt(attrs[12]));
-    	movie.setProduction(attrs[13]);
-    	movie.setWebsite(attrs[14]);
+    @RequestMapping(value="/updateMovie", method = RequestMethod.POST, consumes = {"application/json"}, produces = MediaType.APPLICATION_JSON_VALUE)
+    public @ResponseBody Movie updateMovie(@RequestBody Movie movie) throws SQLException{
     	movieService.updateMovie(movie);
+    	return movie;
     }
     
-    @RequestMapping(value="/deleteMovie", method = RequestMethod.POST)
-    public void deleteMovie(@RequestParam(name = "imdbId") String imdbId) throws SQLException{
+    @RequestMapping(value="/deleteMovie", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+    public @ResponseBody int deleteMovie(@RequestParam(name = "imdbId") int imdbId) throws SQLException{
     	movieService.deleteMovie(imdbId);
+    	return imdbId;
     }
     
     @RequestMapping(value="/search", method = RequestMethod.GET, produces = "application/json")
@@ -91,6 +61,9 @@ public class MovieController {
     			return movieService.getAllMoviesByLanguage(input);
     		else if(option.equals("country"))
     			return movieService.getAllMoviesByCountry(input);
+    		else if(option.equals("actor"))
+    			return movieService.getAllMoviesByActor(input);
+    		
     		else return null;
     	
     }

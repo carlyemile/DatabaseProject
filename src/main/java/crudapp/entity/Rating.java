@@ -1,24 +1,10 @@
 package crudapp.entity;
 
 public class Rating {
-	String ratingId, imdbId, source, value;
+	String source;
+	int value;
 
-	public String getRatingId() {
-		return ratingId;
-	}
-
-	public void setRatingId(String ratingId) {
-		this.ratingId = ratingId;
-	}
-
-	public String getImdbId() {
-		return imdbId;
-	}
-
-	public void setImdbId(String imdbId) {
-		this.imdbId = imdbId;
-	}
-
+	
 	public String getSource() {
 		return source;
 	}
@@ -27,11 +13,11 @@ public class Rating {
 		this.source = source;
 	}
 
-	public String getValue() {
+	public int getValue() {
 		return value;
 	}
 
-	public void setValue(String value) {
+	public void setValue(int value) {
 		this.value = value;
 	}
 	

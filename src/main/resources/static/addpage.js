@@ -7,51 +7,6 @@ movie["languages"] = [];
 movie["ratings"] = [];
 movie["countries"] = [];
 var pageNum = 0;
-window.onload = function(){
-	
-	var url = document.location.href;
-	var params = url.split('?')[1];
-	var movieId = params.split('=')[1];
-
-var xml = new XMLHttpRequest();
-var url = "http://localhost:8080/selectedMovie"
-	xml.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-        var results = JSON.parse(this.responseText);
-        setFields(results);
-    }
-};
-xml.open("GET", url+"?imdbId="+movieId, true);
-xml.send();
-}
-
-function setFields(results){
-document.getElementById("title").value=results.title;
-document.getElementById("year").value=results.year;
-document.getElementById("mprating").value=results.rated;
-document.getElementById("release").value=results.releaseDate;
-document.getElementById("runtime").value=results.runtime;
-document.getElementById("plot").value=results.plot;
-document.getElementById("awards").value=results.awards;
-document.getElementById("poster").value=results.poster;
-document.getElementById("metascore").value=results.metascore;
-document.getElementById("imdbRating").value=results.imdbRating;
-document.getElementById("imdbVotes").value=results.imdbVotes;
-document.getElementById("type").value=results.type;
-document.getElementById("dvd").value=results.dvd;
-document.getElementById("boxoffice").value=results.boxoffice;
-document.getElementById("production").value=results.production;
-document.getElementById("website").value=results.website;
-console.log(results.actors);
-movie["actors"] = results.actors;
-movie["genres"] = results.genres;
-movie["writers"] = results.writers;
-movie["directors"] = results.directors;
-movie["languages"] = results.languages;
-movie["ratings"] = results.ratings;
-movie["countries"] = results.countries;
-
-}
 
 function Next(){
     if(pageNum==0){
@@ -76,12 +31,6 @@ function Next(){
         '<tr><th>Actor</th></tr></table><form><div class="form-group"><label for="input">Enter Actor:</label>'+
     '<input type="text" class="form-control" id="input"></div></form><button onclick="Add()">Add</button>'
         +'<button onclick="Next()">Next</button>';
-        
-        movie["actors"].forEach(function(actor){
-            document.getElementById("table").innerHTML+="<tr><td>"+actor+"</td></tr>";
-        })
-        movie["actors"]=[];
-        
     }
     
     if(pageNum==1){
@@ -89,13 +38,6 @@ function Next(){
          '<tr><th>Genre</th></tr></table><form><div class="form-group"><label for="input">Enter Genre:</label>'+
      '<input type="text" class="form-control" id="input"></div></form><button onclick="Add()">Add</button>'
          +'<button onclick="Next()">Next</button>';
-    	 
-    	 movie["genres"].forEach(function(genre){
-             document.getElementById("table").innerHTML+="<tr><td>"+genre+"</td></tr>";
-
-         })
-         
-         movie["genres"]=[];
     }
     
     if(pageNum==2){
@@ -103,26 +45,13 @@ function Next(){
         '<tr><th>Writer</th></tr></table><form><div class="form-group"><label for="input">Enter Writer:</label>'+
     '<input type="text" class="form-control" id="input"></div></form><button onclick="Add()">Add</button>'
         +'<button onclick="Next()">Next</button>';
-   	 
-   	 movie["writers"].forEach(function(item){
-         document.getElementById("table").innerHTML+="<tr><td>"+item+"</td></tr>";
-
-     })
-     movie["writers"]=[];
    }
-    
     
     if(pageNum==3){
       	 document.body.innerHTML= '<h1>Add Directors</h1><table id ="table" class="table-bordered table-responsive">'+
            '<tr><th>Director</th></tr></table><form><div class="form-group"><label for="input">Enter Director:</label>'+
        '<input type="text" class="form-control" id="input"></div></form><button onclick="Add()">Add</button>'
            +'<button onclick="Next()">Next</button>';
-      	 
-      	movie["directors"].forEach(function(item){
-            document.getElementById("table").innerHTML+="<tr><td>"+item+"</td></tr>";
-
-        })
-        movie["directors"]=[];
       }
     
     
@@ -131,12 +60,6 @@ function Next(){
           '<tr><th>Language</th></tr></table><form><div class="form-group"><label for="input">Enter Language:</label>'+
       '<input type="text" class="form-control" id="input"></div></form><button onclick="Add()">Add</button>'
           +'<button onclick="Next()">Next</button>';
-     	 
-     	movie["languages"].forEach(function(item){
-            document.getElementById("table").innerHTML+="<tr><td>"+item+"</td></tr>";
-
-        })
-        movie["languages"]=[];
      }
     
     if(pageNum==5){
@@ -145,13 +68,6 @@ function Next(){
       '<input type="text" class="form-control" id="input"></div><div class="form-group"><label for="input2">Enter Source:</label>'+
       '<input type="text" class="form-control" id="input2"></div></form><button onclick="Add()">Add</button>'
           +'<button onclick="Next()">Next</button>';
-     	 
-     	movie["ratings"].forEach(function(item){
-            document.getElementById("table").innerHTML+="<tr><td>"+item.value+"</td><td>"+item.source+"</td></tr>";
-
-        })
-        movie["ratings"]=[];
-     	 
      }
     
     if(pageNum==6){
@@ -159,13 +75,6 @@ function Next(){
          '<tr><th>Country</th></tr></table><form><div class="form-group"><label for="input">Enter Country:</label>'+
      '<input type="text" class="form-control" id="input"></div></form><button onclick="Add()">Add</button>'
          +'<button onclick="Done()">Done</button>';
-    	 
-    	 movie["countries"].forEach(function(item){
-             document.getElementById("table").innerHTML+="<tr><td>"+item+"</td></tr>";
-
-         })
-         
-         movie["countries"]=[];
     }
     
     pageNum++;
@@ -212,10 +121,10 @@ function Add(){
 
 function Done(){
     var xml = new XMLHttpRequest();
-    xml.open("POST", "http://localhost:8080/updateMovie");
+    xml.open("POST", "http://localhost:8080/addMovie");
     xml.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
-        alert("Movie has been updated.");
+        alert("Movie has been added.");
 	window.location="index.html";
     }
     }

@@ -21,7 +21,7 @@ public class MovieService {
 		return movieDao.getAllMovies();
 	}
 	
-	public Movie getMovieById(String imdbId) throws SQLException {
+	public Movie getMovieById(int imdbId) throws SQLException {
 		return movieDao.getMovieById(imdbId);
 	}
 	
@@ -30,12 +30,12 @@ public class MovieService {
 		movieDao.updateMovie(movie);
 	}
 	
-	public void deleteMovie(String movieId) throws SQLException{
+	public void deleteMovie(int movieId) throws SQLException{
 		movieDao.deleteMovie(movieId);
 	}
 	
-	public String addMovie(Movie movie) throws SQLException{
-		return movieDao.addMovie(movie);
+	public void addMovie(Movie movie) throws SQLException{
+		 movieDao.addMovie(movie);
 	}
 	
 	public List<Movie> getAllMoviesByTitle(String input) throws SQLException{
@@ -58,4 +58,7 @@ public class MovieService {
 		return movieDao.getAllMoviesByCountry(input);
 	}
 	
+	public List<Movie> getAllMoviesByActor(String input) throws SQLException{
+		return movieDao.getAllMoviesByActor(input);
+	}
 }
