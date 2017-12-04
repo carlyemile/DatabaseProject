@@ -23,7 +23,6 @@ function Edit(movieId){
 function Delete(movieId){
 	if(confirm("Are you sure you want to delete this movie? If so, press OK to continue.")==true)
 		var xml = new XMLHttpRequest();
-	alert(movieId);
 	var url = "http://localhost:8080/deleteMovie"
 	var param = "imdbId="+movieId;
 		xml.onreadystatechange = function() {
@@ -44,7 +43,6 @@ function displayResults(movies){
        "<th>Runtime</th><th>Metascore</th><th>IMDB Rating</th><th>IMDB Votes</th>"+
         "<th>Type</th><th>DVD Release</th><th>Box Office</th><th>Production</th><th>Website</th></tr>";
     
-    console.log(movies)
     movies.forEach(function(movie){
         table+='<tr><td><button class="editbtn">Edit</button></td>'+"<td><button class='deletebtn'>Delete</button></td><td><button class='viewbtn'>View Details</button></td><td>"+movie.imdbID+"</td>"+
     "<td>"+movie.title+"</td><td>"+movie.year+"</td><td>"+movie.rated+"</td><td>"+movie.releaseDate+"</td>"+

@@ -42,7 +42,6 @@ document.getElementById("dvd").value=results.dvd;
 document.getElementById("boxoffice").value=results.boxoffice;
 document.getElementById("production").value=results.production;
 document.getElementById("website").value=results.website;
-console.log(results.actors);
 movie["actors"] = results.actors;
 movie["genres"] = results.genres;
 movie["writers"] = results.writers;

@@ -18,8 +18,6 @@ public class MovieController {
 
     @Autowired
     private MovieService movieService;
-    private String addedImdbId;
-    private String selectedImdbId;
 
     @RequestMapping(value="/movies", method = RequestMethod.GET, produces = "application/json")
     public @ResponseBody Collection<Movie> getAllMovies() throws SQLException{

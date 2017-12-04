@@ -515,8 +515,4 @@ public class MovieDao {
 		return ratings.toArray(new Rating[ratings.size()]);
 	}
 	
-	 public static void main(String[] args) throws SQLException{
-		 MovieDao app = new MovieDao();
-		System.out.println(app.getMovieById(3896198).getBoxOffice());
-	 }
 }
