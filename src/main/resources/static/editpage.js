@@ -12,7 +12,8 @@ window.onload = function(){
 	var url = document.location.href;
 	var params = url.split('?')[1];
 	var movieId = params.split('=')[1];
-
+    movie["imdbID"] = movieId;
+    console.log(movie);
 var xml = new XMLHttpRequest();
 var url = "http://localhost:8080/selectedMovie"
 	xml.onreadystatechange = function() {

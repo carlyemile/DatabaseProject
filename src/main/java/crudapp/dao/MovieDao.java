@@ -150,8 +150,6 @@ public class MovieDao {
 		pstmt.setString(13,movie.getBoxOffice());
 		pstmt.setString(14,movie.getProduction());
 		pstmt.setString(15,movie.getWebsite());
-		System.out.println("imdb id: " + movie.getImdbID());
-		//System.out.println("id: " + id);
 		pstmt.setInt(16,movie.getImdbID());
 		pstmt.executeUpdate();
 		pstmt.close();
