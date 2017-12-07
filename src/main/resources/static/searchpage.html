@@ -8,22 +8,30 @@
     
     </head>
     <body>
-<form name="form" onsubmit="return false">
-  <div class="form-group">
-      <input type="text" name="input" id="input">
-    <label for="menu">Search By:</label>
-      <select class="form-control" id="menu">
-    <option>Title</option>
-    <option>Year</option>
-    <option>Genre</option>
-    <option>Language</option>
-    <option>Country</option>
-    <option>Actor</option>
+    <h1 style="text-align: center;">Movies Database</h1>
     
-  </select>
-      <button type="submit"onclick="Search()">Search</button>
-  
-</div>
+<form name="form" onsubmit="return false">
+
+  <div class="col-lg-6" style="margin-bottom: 20px">
+  <div class="input-group">
+  	<span class="input-group-addon">Search By</span>
+  	<select class="form-control" id="menu">
+	    <option>Title</option>
+	    <option>Year</option>
+	    <option>Genre</option>
+	    <option>Language</option>
+	    <option>Country</option>
+	    <option>Actor</option>
+    </select>
+    </div>
+  <div class="input-group">
+      <input type="text" class="form-control" name="input" id="input">
+	
+    <div class="input-group-btn">
+      <button class="btn btn-primary" type="submit"onclick="Search()">Search</button>
+    </div>
+	</div>
+	</div>
         </form>
         <div id="resultsTable"></div>
         
