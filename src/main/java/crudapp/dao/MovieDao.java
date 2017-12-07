@@ -133,6 +133,7 @@ public class MovieDao {
 	
 	public void updateMovie(Movie movie) throws SQLException{
 		String sql = "update movie set title = ?, year = ?, mpaa_rating = ?, released = ?, runtime = ?, plot = ?, poster = ?, metascore = ?,imdbrating = ?, imdbvotes = ?, mtype = ?, dvd = ?, boxoffice = ?, production = ?,website = ? where imdbId = ?";
+		
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 		pstmt.setString(1,movie.getTitle());
 		pstmt.setInt(2,movie.getYear());
@@ -149,6 +150,7 @@ public class MovieDao {
 		pstmt.setString(13,movie.getBoxOffice());
 		pstmt.setString(14,movie.getProduction());
 		pstmt.setString(15,movie.getWebsite());
+		System.out.println(movie.getImdbID());
 		pstmt.setInt(16,movie.getImdbID());
 		pstmt.executeUpdate();
 		pstmt.close();
@@ -166,7 +168,7 @@ public class MovieDao {
 	
 	public void addActors(Movie movie, int imdbId) throws SQLException {
 		for(String actor: movie.getActors()) {
-		String sql = "insert into actor (actorName) values (?)";
+		String sql = "insert or ignore into actor (actorName) values (?)";
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 		pstmt.setString(1, actor);
 		pstmt.executeUpdate();
@@ -191,7 +193,7 @@ public class MovieDao {
 		
 		
 		for(String country: movie.getCountries()) {
-		String sql = "insert into country (country) values (?)";
+		String sql = "insert or ignore into country (country) values (?)";
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 		pstmt.setString(1, country);
 		pstmt.executeUpdate();
@@ -202,7 +204,7 @@ public class MovieDao {
 		ResultSet rs = pstmt.executeQuery();
 		int countryId = rs.getInt("id");
 		
-		String sql3 = "insert into movieCountry (countryId,imdbId) values (?,?)";
+		String sql3 = "insert or ignore into movieCountry (countryId,imdbId) values (?,?)";
 		pstmt = conn.prepareStatement(sql3);
 		pstmt.setInt(1, countryId);
 		pstmt.setInt(2, imdbId);
@@ -215,7 +217,7 @@ public class MovieDao {
 		
 		
 		for(String director: movie.getDirectors()) {
-		String sql = "insert into director (directorName) values (?)";
+		String sql = "insert or ignore into director (directorName) values (?)";
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 		pstmt.setString(1, director);
 		pstmt.executeUpdate();
@@ -239,7 +241,7 @@ public class MovieDao {
 		
 		
 		for(String genre: movie.getGenres()) {
-		String sql = "insert into genre (genre) values (?)";
+		String sql = "insert or ignore into genre (genre) values (?)";
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 		pstmt.setString(1, genre);
 		pstmt.executeUpdate();
@@ -263,7 +265,7 @@ public class MovieDao {
 		
 		
 		for(String language: movie.getLanguages()) {
-		String sql = "insert into language (language) values (?)";
+		String sql = "insert or ignore into language (language) values (?)";
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 		pstmt.setString(1, language);
 		pstmt.executeUpdate();
@@ -287,7 +289,7 @@ public class MovieDao {
 		
 		
 		for(String writer: movie.getWriters()) {
-		String sql = "insert into writer (writerName) values (?)";
+		String sql = "insert or ignore into writer (writerName) values (?)";
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 		pstmt.setString(1, writer);
 		pstmt.executeUpdate();

@@ -44,7 +44,7 @@ function displayResults(movies){
         "<th>Type</th><th>DVD Release</th><th>Box Office</th><th>Production</th><th>Website</th></tr>";
     
     movies.forEach(function(movie){
-        table+='<tr><td><button class="editbtn">Edit</button></td>'+"<td><button class='deletebtn'>Delete</button></td><td><button class='viewbtn'>View Details</button></td><td>"+movie.imdbID+"</td>"+
+        table+='<tr><td><button class="editbtn btn btn-primary">Edit</button></td>'+"<td><button class='deletebtn btn btn-danger'>Delete</button></td><td><button class='viewbtn btn btn-info'>View Details</button></td><td>"+movie.imdbID+"</td>"+
     "<td>"+movie.title+"</td><td>"+movie.year+"</td><td>"+movie.rated+"</td><td>"+movie.releaseDate+"</td>"+
        "<td>"+movie.runtime+"</td><td>"+movie.metascore+"</td><td>"+movie.imdbRating+"</td><td>"+movie.imdbVotes+"</td>"+
         "<td>"+movie.type+"</td><td>"+movie.dvdDate+"</td><td>"+movie.boxOffice+"</td><td>"+movie.production+"</td><td>"+movie.website+"</td></tr>";

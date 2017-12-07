@@ -7,29 +7,54 @@
                 <script type="text/javascript" src="viewdetails.js"></script>
     </head>
     <body>
-        <p id="imdbId"><bold>IMDB ID: </bold></p>
-        <p id="title"><bold>Title: </bold></p>
-        <p id="year"><bold>Year: </bold></p>
-        <p id="mpaa_rating"><bold>MPAA Rating: </bold></p>
-        <p id="released"><bold>Release Date: </bold></p>
-        <p id="runtime"><bold>Runtime: </bold></p>
-         <p id="plot"><bold>Plot: </bold></p>
-        <p id="poster"><bold>Poster: </bold><img></p>
-        <p id="metascore"><bold>Metascore: </bold></p>
-        <p id="imdbrating"><bold>IMDB Rating: </bold></p>
-        <p id="imdbvotes"><bold>IMDB Votes: </bold></p>
-        <p id="mtype"><bold>Type: </bold></p>
-         <p id="dvd"><bold>DVD Release Date: </bold></p>
-        <p id="boxoffice"><bold>Box Office: </bold></p>
-        <p id="production"><bold>Production: </bold></p>
-        <p id="website"><bold>Website: </bold></p>
-        <ul id="actors"><bold>Actors: </bold></ul>
-        <ul id="countries"><bold>Countries: </bold></ul>
-         <ul id="directors"><bold>Directors: </bold></ul>
-        <ul id="genres"><bold>Genres: </bold></ul>
-        <ul id="languages"><bold>Languages: </bold></ul>
-        <ul id="writers"><bold>Writers: </bold></ul>
-         <ul id="ratings"><bold>Ratings: </bold></ul>
-
+    	<div class="row" style="border: 1px solid black">
+    	<div class="col-md-6" >
+        <h3 id="imdbId"><strong>IMDB ID: </strong></h3>
+        <h1 id="title"><strong>Title: </strong></h1>
+        <h3 id="year"><strong>Year: </strong></h3>
+        <h3 id="mpaa_rating"><strong>MPAA Rating: </strong></h3>
+        <h3 id="released"><strong>Release Date: </strong></h3>
+        <h3 id="runtime"><strong>Runtime: </strong></h3>
+        <p id="plot"><strong>Plot: </strong></p>
+        <p id="metascore"><strong>Metascore: </strong></p>
+        <p id="imdbrating"><strong>IMDB Rating: </strong></p>
+        <p id="imdbvotes"><strong>IMDB Votes: </strong></p>
+        </div>
+        <p id="website"><strong>Website: </strong></p>
+        <label>Poster</label>
+        <p id="poster"><img></img></p>
+        </div>
+        
+        <div class="row" style="border: 1px solid black">
+    	<div class="col-md-6" style="border-right: 1px solid black">
+        <p id="mtype"><strong>Type: </strong></p>
+         <p id="dvd"><strong>DVD Release Date: </strong></p>
+         </div>
+         <div class="col-md-6">
+        <p id="boxoffice"><strong>Box Office: </strong></p>
+        <p id="production"><strong>Production: </strong></p>
+        </div>
+        </div>
+        
+        <div class="row" style="border: 1px solid black">
+    	<div class="col-md-6" style="border-right: 1px solid black">
+        <ul id="actors"><strong>Actors: </strong></ul>
+        <ul id="writers"><strong>Writers: </strong></ul>
+        </div>
+        
+        <div class="col-md-6">
+        <ul id="languages"><strong>Languages: </strong></ul>
+        <ul id="countries"><strong>Countries: </strong></ul>
+        </div>
+        </div>
+        <div class="row" style="border: 1px solid black">
+        <div class="col-md-6" style="border-right: 1px solid black">
+        <ul id="directors"><strong>Directors: </strong></ul>
+        <ul id="genres"><strong>Genres: </strong></ul>
+        </div>
+        <div class="col-md-6">
+         <ul id="ratings"><strong>Ratings: </strong></ul>
+		</div>
+		</div>
     </body>
 </html>
