@@ -1,13 +1,7 @@
-crudapp\entity\Movie_Actor.class
-crudapp\entity\Movie_Genre.class
 crudapp\service\MovieService.class
 crudapp\entity\Rating.class
 crudapp\dao\MovieDao$MovieRowMapper.class
 crudapp\controller\MovieController.class
-crudapp\entity\Movie_Director.class
-crudapp\entity\Movie_Language.class
 crudapp\MovieCrudApplication.class
-crudapp\entity\Movie_Writer.class
 crudapp\dao\MovieDao.class
 crudapp\entity\Movie.class
-crudapp\entity\Movie_Country.class
